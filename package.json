@@ -1,0 +1,17 @@
+{
+  "name": "vercel-fastify-deploy-serverless",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "vercel": "vercel dev"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "fastify": "^4.21.0"
+  },
+  "devDependencies": {
+    "@vercel/node": "^2.15.8"
+  }
+}
