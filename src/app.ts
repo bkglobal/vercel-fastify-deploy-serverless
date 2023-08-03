@@ -16,7 +16,7 @@ async function app(
       hello: "World",
     });
   });
-  instance.register(routes, { prefix: "api/v1" });
+  instance.register(routes, { prefix: "/api/v1" });
   done();
 }
 
