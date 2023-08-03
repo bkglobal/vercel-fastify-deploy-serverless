@@ -4,24 +4,9 @@ import {
   FastifyRequest,
   FastifyServerOptions,
 } from "fastify";
+import routes from "./routes";
 
-interface IQueryString {
-  name: string;
-}
-
-interface IParams {
-  name: string;
-}
-
-interface CustomRouteGenericParam {
-  Params: IParams;
-}
-
-interface CustomRouteGenericQuery {
-  Querystring: IQueryString;
-}
-
-async function routes(
+async function app(
   instance: FastifyInstance,
   opts: FastifyServerOptions,
   done
@@ -31,38 +16,8 @@ async function routes(
       hello: "World",
     });
   });
-
-  instance.register(
-    async (instance: FastifyInstance, opts: FastifyServerOptions, done) => {
-      instance.get(
-        "/",
-        async (
-          req: FastifyRequest<CustomRouteGenericQuery>,
-          res: FastifyReply
-        ) => {
-          const { name = "" } = req.query;
-          res.status(200).send(`Hello ${name}`);
-        }
-      );
-
-      instance.get(
-        "/:name",
-        async (
-          req: FastifyRequest<CustomRouteGenericParam>,
-          res: FastifyReply
-        ) => {
-          const { name = "" } = req.params;
-          res.status(200).send(`Hello ${name}`);
-        }
-      );
-      done();
-    },
-    {
-      prefix: "/hello",
-    }
-  );
-
+  instance.register(routes, { prefix: "api/v1" });
   done();
 }
 
-export default routes;
+export default app;
