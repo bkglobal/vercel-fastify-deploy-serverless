@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "vercel": "vercel dev"
+    "vercel": "vercel dev",
+    "build": "tsc -p tsconfig.json"
   },
   "dependencies": {
     "dotenv": "^16.3.1",
